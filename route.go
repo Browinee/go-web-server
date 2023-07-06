@@ -1,5 +1,7 @@
 package main
 
-func routeHandler() {
+import "web-server/framework"
 
+func registerRouter(core *framework.Core) {
+	core.Get("foo", FooControllerHandler)
 }
