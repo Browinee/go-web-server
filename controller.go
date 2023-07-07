@@ -10,10 +10,12 @@ import (
 
 
 func FooControllerHandler(ctx *framework.Context) error {
+
 	durationCtx, cancel := context.WithTimeout(ctx.BaseContext(), time.Duration(1*time.Second))
 	defer cancel()
 	panicChan := make(chan interface{}, 1)
 	finish := make(chan struct{}, 1)
+
 	go func() {
 		defer func() {
 			if p := recover() ; p!=nil {
